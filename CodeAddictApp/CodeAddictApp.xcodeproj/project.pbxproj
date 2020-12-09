@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1782E7717D4A634CA2517D7F /* Pods_CodeAddictApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A99055E5C0153BD295A8CF21 /* Pods_CodeAddictApp.framework */; };
 		D12D89C8258156E800636DEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89C7258156E800636DEC /* AppDelegate.swift */; };
 		D12D89CA258156E800636DEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89C9258156E800636DEC /* SceneDelegate.swift */; };
 		D12D89CC258156E800636DEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89CB258156E800636DEC /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		961F363E7C494813CF408C6D /* Pods-CodeAddictApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeAddictApp.release.xcconfig"; path = "Target Support Files/Pods-CodeAddictApp/Pods-CodeAddictApp.release.xcconfig"; sourceTree = "<group>"; };
+		A99055E5C0153BD295A8CF21 /* Pods_CodeAddictApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeAddictApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D12D89C4258156E800636DEC /* CodeAddictApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeAddictApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D12D89C7258156E800636DEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D12D89C9258156E800636DEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		D12D89D0258156E900636DEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D12D89D3258156E900636DEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D12D89D5258156E900636DEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F433DCF79D7DCA584E10B807 /* Pods-CodeAddictApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeAddictApp.debug.xcconfig"; path = "Target Support Files/Pods-CodeAddictApp/Pods-CodeAddictApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1782E7717D4A634CA2517D7F /* Pods_CodeAddictApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C7578B7B4FCC86BBF359BAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A99055E5C0153BD295A8CF21 /* Pods_CodeAddictApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C16DD4DE9F73CC9391EBC380 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F433DCF79D7DCA584E10B807 /* Pods-CodeAddictApp.debug.xcconfig */,
+				961F363E7C494813CF408C6D /* Pods-CodeAddictApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D12D89BB258156E800636DEC = {
 			isa = PBXGroup;
 			children = (
 				D12D89C6258156E800636DEC /* CodeAddictApp */,
 				D12D89C5258156E800636DEC /* Products */,
+				C16DD4DE9F73CC9391EBC380 /* Pods */,
+				0C7578B7B4FCC86BBF359BAF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D12D89D8258156E900636DEC /* Build configuration list for PBXNativeTarget "CodeAddictApp" */;
 			buildPhases = (
+				27495C02DE08AD9BD0939429 /* [CP] Check Pods Manifest.lock */,
 				D12D89C0258156E800636DEC /* Sources */,
 				D12D89C1258156E800636DEC /* Frameworks */,
 				D12D89C2258156E800636DEC /* Resources */,
+				98612FB74EB0C40197A7E189 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27495C02DE08AD9BD0939429 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CodeAddictApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98612FB74EB0C40197A7E189 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CodeAddictApp/Pods-CodeAddictApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CodeAddictApp/Pods-CodeAddictApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CodeAddictApp/Pods-CodeAddictApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D12D89C0258156E800636DEC /* Sources */ = {
@@ -283,6 +352,7 @@
 		};
 		D12D89D9258156E900636DEC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F433DCF79D7DCA584E10B807 /* Pods-CodeAddictApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +372,7 @@
 		};
 		D12D89DA258156E900636DEC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 961F363E7C494813CF408C6D /* Pods-CodeAddictApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

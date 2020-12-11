@@ -3,17 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1782E7717D4A634CA2517D7F /* Pods_CodeAddictApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A99055E5C0153BD295A8CF21 /* Pods_CodeAddictApp.framework */; };
 		D12D89C8258156E800636DEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89C7258156E800636DEC /* AppDelegate.swift */; };
 		D12D89CA258156E800636DEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89C9258156E800636DEC /* SceneDelegate.swift */; };
-		D12D89CC258156E800636DEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89CB258156E800636DEC /* ViewController.swift */; };
+		D12D89CC258156E800636DEC /* RepositoriesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89CB258156E800636DEC /* RepositoriesListController.swift */; };
 		D12D89CF258156E800636DEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12D89CD258156E800636DEC /* Main.storyboard */; };
 		D12D89D1258156E900636DEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D12D89D0258156E900636DEC /* Assets.xcassets */; };
 		D12D89D4258156E900636DEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12D89D2258156E900636DEC /* LaunchScreen.storyboard */; };
+		D19197BE2583CDC20015B015 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = D19197BD2583CDC20015B015 /* image.png */; };
+		D1EA168625822CAC003C7200 /* RepositoriesDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA168525822CAC003C7200 /* RepositoriesDetailsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,11 +24,13 @@
 		D12D89C4258156E800636DEC /* CodeAddictApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeAddictApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D12D89C7258156E800636DEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D12D89C9258156E800636DEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D12D89CB258156E800636DEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D12D89CB258156E800636DEC /* RepositoriesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListController.swift; sourceTree = "<group>"; };
 		D12D89CE258156E800636DEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D12D89D0258156E900636DEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D12D89D3258156E900636DEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D12D89D5258156E900636DEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D19197BD2583CDC20015B015 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		D1EA168525822CAC003C7200 /* RepositoriesDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesDetailsController.swift; sourceTree = "<group>"; };
 		F433DCF79D7DCA584E10B807 /* Pods-CodeAddictApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeAddictApp.debug.xcconfig"; path = "Target Support Files/Pods-CodeAddictApp/Pods-CodeAddictApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,7 +60,6 @@
 				F433DCF79D7DCA584E10B807 /* Pods-CodeAddictApp.debug.xcconfig */,
 				961F363E7C494813CF408C6D /* Pods-CodeAddictApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,13 +84,15 @@
 		D12D89C6258156E800636DEC /* CodeAddictApp */ = {
 			isa = PBXGroup;
 			children = (
+				D19197BD2583CDC20015B015 /* image.png */,
 				D12D89C7258156E800636DEC /* AppDelegate.swift */,
 				D12D89C9258156E800636DEC /* SceneDelegate.swift */,
-				D12D89CB258156E800636DEC /* ViewController.swift */,
+				D12D89CB258156E800636DEC /* RepositoriesListController.swift */,
 				D12D89CD258156E800636DEC /* Main.storyboard */,
 				D12D89D0258156E900636DEC /* Assets.xcassets */,
 				D12D89D2258156E900636DEC /* LaunchScreen.storyboard */,
 				D12D89D5258156E900636DEC /* Info.plist */,
+				D1EA168525822CAC003C7200 /* RepositoriesDetailsController.swift */,
 			);
 			path = CodeAddictApp;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				D12D89D4258156E900636DEC /* LaunchScreen.storyboard in Resources */,
 				D12D89D1258156E900636DEC /* Assets.xcassets in Resources */,
 				D12D89CF258156E800636DEC /* Main.storyboard in Resources */,
+				D19197BE2583CDC20015B015 /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +212,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D12D89CC258156E800636DEC /* ViewController.swift in Sources */,
+				D1EA168625822CAC003C7200 /* RepositoriesDetailsController.swift in Sources */,
+				D12D89CC258156E800636DEC /* RepositoriesListController.swift in Sources */,
 				D12D89C8258156E800636DEC /* AppDelegate.swift in Sources */,
 				D12D89CA258156E800636DEC /* SceneDelegate.swift in Sources */,
 			);

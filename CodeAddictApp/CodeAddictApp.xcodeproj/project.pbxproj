@@ -8,19 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		1782E7717D4A634CA2517D7F /* Pods_CodeAddictApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A99055E5C0153BD295A8CF21 /* Pods_CodeAddictApp.framework */; };
+		D10C130E2587D3DC000941AD /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10C130D2587D3DC000941AD /* NavigationController.swift */; };
 		D12D89C8258156E800636DEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89C7258156E800636DEC /* AppDelegate.swift */; };
 		D12D89CA258156E800636DEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89C9258156E800636DEC /* SceneDelegate.swift */; };
 		D12D89CC258156E800636DEC /* RepositoriesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89CB258156E800636DEC /* RepositoriesListController.swift */; };
 		D12D89CF258156E800636DEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12D89CD258156E800636DEC /* Main.storyboard */; };
 		D12D89D1258156E900636DEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D12D89D0258156E900636DEC /* Assets.xcassets */; };
 		D12D89D4258156E900636DEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12D89D2258156E900636DEC /* LaunchScreen.storyboard */; };
-		D19197BE2583CDC20015B015 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = D19197BD2583CDC20015B015 /* image.png */; };
+		D1362D942584D6570035A354 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1362D932584D6570035A354 /* NetworkService.swift */; };
+		D1362D9B2585256F0035A354 /* GitHubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1362D9A2585256F0035A354 /* GitHubRepository.swift */; };
 		D1EA168625822CAC003C7200 /* RepositoriesDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA168525822CAC003C7200 /* RepositoriesDetailsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		961F363E7C494813CF408C6D /* Pods-CodeAddictApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeAddictApp.release.xcconfig"; path = "Target Support Files/Pods-CodeAddictApp/Pods-CodeAddictApp.release.xcconfig"; sourceTree = "<group>"; };
 		A99055E5C0153BD295A8CF21 /* Pods_CodeAddictApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeAddictApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D10C130D2587D3DC000941AD /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		D12D89C4258156E800636DEC /* CodeAddictApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeAddictApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D12D89C7258156E800636DEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D12D89C9258156E800636DEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -29,7 +32,8 @@
 		D12D89D0258156E900636DEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D12D89D3258156E900636DEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D12D89D5258156E900636DEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D19197BD2583CDC20015B015 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		D1362D932584D6570035A354 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		D1362D9A2585256F0035A354 /* GitHubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepository.swift; sourceTree = "<group>"; };
 		D1EA168525822CAC003C7200 /* RepositoriesDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesDetailsController.swift; sourceTree = "<group>"; };
 		F433DCF79D7DCA584E10B807 /* Pods-CodeAddictApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeAddictApp.debug.xcconfig"; path = "Target Support Files/Pods-CodeAddictApp/Pods-CodeAddictApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +88,6 @@
 		D12D89C6258156E800636DEC /* CodeAddictApp */ = {
 			isa = PBXGroup;
 			children = (
-				D19197BD2583CDC20015B015 /* image.png */,
 				D12D89C7258156E800636DEC /* AppDelegate.swift */,
 				D12D89C9258156E800636DEC /* SceneDelegate.swift */,
 				D12D89CB258156E800636DEC /* RepositoriesListController.swift */,
@@ -93,6 +96,9 @@
 				D12D89D2258156E900636DEC /* LaunchScreen.storyboard */,
 				D12D89D5258156E900636DEC /* Info.plist */,
 				D1EA168525822CAC003C7200 /* RepositoriesDetailsController.swift */,
+				D1362D932584D6570035A354 /* NetworkService.swift */,
+				D1362D9A2585256F0035A354 /* GitHubRepository.swift */,
+				D10C130D2587D3DC000941AD /* NavigationController.swift */,
 			);
 			path = CodeAddictApp;
 			sourceTree = "<group>";
@@ -159,7 +165,6 @@
 				D12D89D4258156E900636DEC /* LaunchScreen.storyboard in Resources */,
 				D12D89D1258156E900636DEC /* Assets.xcassets in Resources */,
 				D12D89CF258156E800636DEC /* Main.storyboard in Resources */,
-				D19197BE2583CDC20015B015 /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,9 +217,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1362D9B2585256F0035A354 /* GitHubRepository.swift in Sources */,
+				D1362D942584D6570035A354 /* NetworkService.swift in Sources */,
 				D1EA168625822CAC003C7200 /* RepositoriesDetailsController.swift in Sources */,
 				D12D89CC258156E800636DEC /* RepositoriesListController.swift in Sources */,
 				D12D89C8258156E800636DEC /* AppDelegate.swift in Sources */,
+				D10C130E2587D3DC000941AD /* NavigationController.swift in Sources */,
 				D12D89CA258156E800636DEC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

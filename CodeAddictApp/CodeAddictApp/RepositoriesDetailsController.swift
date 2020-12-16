@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CommitCell: UITableViewCell {
     @IBOutlet weak var commitNumber: UILabel!
@@ -15,7 +17,7 @@ class CommitCell: UITableViewCell {
     }
 }
 
-class RepositoriesDetailsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RepositoriesDetailsController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var repoTitle: UILabel!
@@ -25,25 +27,42 @@ class RepositoriesDetailsController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var viewOnline: UIButton!
     @IBOutlet weak var shareRepo: UIButton!
     
-    @IBAction func viewOnline(_ sender: Any) {
-    }
+    private let githubRepository = GitHubRepository()
+    private let disposeBag = DisposeBag()
     
-    @IBAction func shareRepo(_ sender: Any) {
+    var passedRepoName: String = ""
+    var passedRepoOwner: String = ""
+    var passedRepoImageUrl: String = ""
+    var passedRepoUrl: String = ""
+    var passedRepoStars: Int = 0
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.sectionHeaderHeight = 70
         
-        
-        tableView.delegate = self
-        tableView.dataSource = self
+        repoTitle.text = passedRepoName
+        repoAuthorName.text = passedRepoOwner
+        repoImage.load(url: URL(string: passedRepoImageUrl)!)
+        stars.text = "★ Number of Stars (\(passedRepoStars))"
         
         viewOnline.layer.cornerRadius = 20
         shareRepo.layer.cornerRadius = 10
         
+        tableView.sectionHeaderHeight = 70
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
+        tableView.delegate = self
+        
+        githubRepository.getCommits(owner: passedRepoOwner, repoName: passedRepoName).share()
+        .bind(to: tableView.rx.items(cellIdentifier: "commitCell", cellType: CommitCell.self)) { index, commit, cell in
+            cell.commitNumber.text = "\(index + 1)"
+            cell.commitAuthor.text = commit.commit.author.name
+            cell.commitMessage.text = commit.commit.message
+            cell.email.text = commit.commit.author.email
+        }.disposed(by: disposeBag)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -57,18 +76,32 @@ class RepositoriesDetailsController: UIViewController, UITableViewDelegate, UITa
         return header
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+    @IBAction func viewOnline(_ sender: Any) {
+        guard let url = URL(string: passedRepoUrl) else { return }
+        UIApplication.shared.open(url)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "commitCell", for: indexPath) as! CommitCell
+    @IBAction func shareRepo(_ sender: Any) {
+        let description = "Check out this repo. It's lit!🔥🔥"
+        let url = URL(string: passedRepoUrl)!
+        let activityViewController : UIActivityViewController = UIActivityViewController(activityItems: [description, url], applicationActivities: nil)
         
-        cell.commitAuthor.text = "Commit author Name".uppercased()
-        cell.commitNumber.text = "1"
-        cell.commitMessage.text = "Krotki commit"
-        cell.email.text = "email@authorname.com"
-        
-        return cell
+        activityViewController.activityItemsConfiguration = [UIActivity.ActivityType.message] as? UIActivityItemsConfigurationReading
+        activityViewController.isModalInPresentation = true
+        self.present(activityViewController, animated: true, completion: nil)
     }
+}
+
+struct Commits: Decodable {
+    let commit: Commit
+}
+
+struct Commit: Decodable {
+    let message: String
+    let author: Author
+}
+
+struct Author: Decodable {
+    let name: String
+    let email: String
 }

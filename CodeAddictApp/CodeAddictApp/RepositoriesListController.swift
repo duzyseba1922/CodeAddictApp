@@ -1,4 +1,5 @@
 import UIKit
+import SwiftyJSON
 
 class RepositoriesCell: UITableViewCell {
     
@@ -15,13 +16,24 @@ class RepositoriesCell: UITableViewCell {
     }
 }
 
-class RepositoriesListController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class RepositoriesListController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    var jsonData: JSON = JSON()
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .darkContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchBar.delegate = self
+        
+        self.tableView.sectionHeaderHeight = 70
+        self.tableView.keyboardDismissMode = .onDrag
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Search"
@@ -29,24 +41,30 @@ class RepositoriesListController: UIViewController, UITableViewDelegate, UITable
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
-        searchBar.delegate = self
-        
-        self.tableView.sectionHeaderHeight = 70
-        self.tableView.keyboardDismissMode = .onDrag
-        tableView.delegate = self
-        tableView.dataSource = self
-        
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    @objc func DismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let query = searchBar.text!.replacingOccurrences(of: " ", with: "_")
+        let task = URLSession.shared.dataTask(with: URL(string: "https://api.github.com/search/repositories?q=" + query)!) { data, response, error in
+            guard let data=data else { return }
+            do {
+                self.jsonData = try JSON(data: data)
+                DispatchQueue.main.async {
+                    self.tableView.delegate = self
+                    self.tableView.dataSource = self
+                    self.tableView.reloadData()
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath) as! RepositoriesCell
-        
-        cell.repoImage.image = UIImage(named: "image.png")
-        cell.repoName.text = "Repozytorium"                            //Dane do testowania
-        cell.repoStars.text = "☆ " + "1234"
-        
-        return cell
+        self.searchBar.endEditing(true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -60,15 +78,39 @@ class RepositoriesListController: UIViewController, UITableViewDelegate, UITable
         return header
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell") as! RepositoriesCell
+        cell.repoName.text = jsonData["items"][indexPath.row]["name"].stringValue
+        cell.repoStars.text = "☆ \(jsonData["items"][indexPath.row]["stargazers_count"].intValue)"
+        cell.repoImage.load(url: URL(string: jsonData["items"][indexPath.row]["owner"]["avatar_url"].stringValue)!)
+        return cell
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5        //wartość do testów
+        return jsonData["items"].count
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.searchBar.endEditing(true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsView = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RepositoriesDetailsController") as! RepositoriesDetailsController
+        detailsView.passedRepoName = jsonData["items"][indexPath.row]["name"].stringValue
+        detailsView.passedRepoOwner = jsonData["items"][indexPath.row]["owner"]["login"].stringValue
+        detailsView.passedRepoImageUrl = jsonData["items"][indexPath.row]["owner"]["avatar_url"].stringValue
+        detailsView.passedRepoUrl = jsonData["items"][indexPath.row]["html_url"].stringValue
+        detailsView.passedRepoStars = jsonData["items"][indexPath.row]["stargazers_count"].intValue
+        self.navigationController?.pushViewController(detailsView, animated: true)
     }
-    
-    @objc func DismissKeyboard() {
-        self.view.endEditing(true)
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
     }
 }

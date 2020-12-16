@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GUx-Gd-dZP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GUx-Gd-dZP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -77,7 +77,6 @@
                                             <outlet property="repoImage" destination="HM1-vS-TJd" id="RLw-hJ-gMo"/>
                                             <outlet property="repoName" destination="7lb-cs-jA6" id="eD6-uN-OxS"/>
                                             <outlet property="repoStars" destination="laW-hM-6iJ" id="sAM-Zm-dAb"/>
-                                            <segue destination="YET-NG-sHp" kind="show" id="X9d-qv-IxF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -108,12 +107,12 @@
         <!--Repositories Details Controller-->
         <scene sceneID="38C-KD-Vs4">
             <objects>
-                <viewController id="YET-NG-sHp" customClass="RepositoriesDetailsController" customModule="CodeAddictApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RepositoriesDetailsController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YET-NG-sHp" customClass="RepositoriesDetailsController" customModule="CodeAddictApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Pe-l3-AuC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image.png" translatesAutoresizingMaskIntoConstraints="NO" id="NBu-Be-Iro">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NBu-Be-Iro">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="308"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NBu-Be-Iro" secondAttribute="height" multiplier="207:154" id="bNd-ZX-uJn"/>
@@ -133,33 +132,23 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMMIT AUTHOR NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pv-9X-UUi">
-                                                    <rect key="frame" x="69.5" y="11" width="329.5" height="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMMIT AUTHOR NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pv-9X-UUi">
+                                                    <rect key="frame" x="69.5" y="16" width="329.5" height="14"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="6pv-9X-UUi" secondAttribute="height" multiplier="309:13" id="XCr-m5-xIC"/>
+                                                        <constraint firstAttribute="width" secondItem="6pv-9X-UUi" secondAttribute="height" multiplier="309:13" constant="-3.2692307692307736" id="XCr-m5-xIC"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
                                                     <color key="textColor" name="AccentColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commit message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNC-Bm-Sea">
-                                                    <rect key="frame" x="69" y="51" width="338" height="28"/>
+                                                    <rect key="frame" x="69" y="53" width="330" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email@authorname.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTZ-48-0Jz">
-                                                    <rect key="frame" x="69.5" y="30.5" width="329.5" height="21.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21.5" id="95p-MI-gGd"/>
-                                                        <constraint firstAttribute="width" secondItem="WTZ-48-0Jz" secondAttribute="height" multiplier="103:7" constant="-6.8571428571428328" id="MRI-FI-78h"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoP-DE-9IM">
-                                                    <rect key="frame" x="20" y="21" width="40" height="40"/>
+                                                    <rect key="frame" x="14" y="21" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="UoP-DE-9IM" secondAttribute="height" multiplier="33:23" constant="-17.391304347826086" id="Fdi-PD-OSG"/>
                                                     </constraints>
@@ -167,18 +156,28 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email@authorname.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTZ-48-0Jz">
+                                                    <rect key="frame" x="69.5" y="30.5" width="329.5" height="21.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21.5" id="95p-MI-gGd"/>
+                                                        <constraint firstAttribute="width" secondItem="WTZ-48-0Jz" secondAttribute="height" multiplier="103:7" constant="13.142857142857167" id="MRI-FI-78h"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6pv-9X-UUi" firstAttribute="trailing" secondItem="WTZ-48-0Jz" secondAttribute="trailing" id="3nq-iq-D8k"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="aNC-Bm-Sea" secondAttribute="bottom" constant="2" id="5ya-ho-jAB"/>
-                                                <constraint firstItem="6pv-9X-UUi" firstAttribute="top" secondItem="qK2-bH-xlS" secondAttribute="topMargin" id="8h4-2Y-hyv"/>
-                                                <constraint firstItem="UoP-DE-9IM" firstAttribute="leading" secondItem="qK2-bH-xlS" secondAttribute="leadingMargin" id="Fju-Ci-lVw"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="aNC-Bm-Sea" secondAttribute="trailing" constant="-13" id="GAz-7I-vh4"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="aNC-Bm-Sea" secondAttribute="bottom" id="5ya-ho-jAB"/>
+                                                <constraint firstItem="6pv-9X-UUi" firstAttribute="top" secondItem="qK2-bH-xlS" secondAttribute="topMargin" constant="5" id="8h4-2Y-hyv"/>
+                                                <constraint firstItem="UoP-DE-9IM" firstAttribute="leading" secondItem="qK2-bH-xlS" secondAttribute="leadingMargin" constant="-6" id="Fju-Ci-lVw"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="aNC-Bm-Sea" secondAttribute="trailing" constant="-5" id="GAz-7I-vh4"/>
                                                 <constraint firstItem="6pv-9X-UUi" firstAttribute="leading" secondItem="qK2-bH-xlS" secondAttribute="leadingMargin" constant="49.5" id="H1j-xq-ucB"/>
                                                 <constraint firstItem="aNC-Bm-Sea" firstAttribute="leading" secondItem="qK2-bH-xlS" secondAttribute="leadingMargin" constant="49" id="MKn-G6-are"/>
                                                 <constraint firstItem="UoP-DE-9IM" firstAttribute="top" secondItem="qK2-bH-xlS" secondAttribute="topMargin" constant="10" id="Qbf-fl-eoF"/>
-                                                <constraint firstItem="aNC-Bm-Sea" firstAttribute="top" secondItem="qK2-bH-xlS" secondAttribute="top" constant="51" id="UA8-tN-KZb"/>
-                                                <constraint firstItem="WTZ-48-0Jz" firstAttribute="leading" secondItem="UoP-DE-9IM" secondAttribute="trailing" constant="9.5" id="YmV-Mk-ZRA"/>
+                                                <constraint firstItem="aNC-Bm-Sea" firstAttribute="top" secondItem="qK2-bH-xlS" secondAttribute="top" constant="53" id="UA8-tN-KZb"/>
+                                                <constraint firstItem="WTZ-48-0Jz" firstAttribute="leading" secondItem="UoP-DE-9IM" secondAttribute="trailing" constant="15.5" id="YmV-Mk-ZRA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="6pv-9X-UUi" secondAttribute="trailing" constant="-5" id="cDN-30-wcX"/>
                                                 <constraint firstItem="UoP-DE-9IM" firstAttribute="firstBaseline" secondItem="WTZ-48-0Jz" secondAttribute="firstBaseline" constant="-7.5" id="cw6-MF-ZiP"/>
                                                 <constraint firstItem="6pv-9X-UUi" firstAttribute="leading" secondItem="WTZ-48-0Jz" secondAttribute="leading" id="lyd-D0-L2u"/>
@@ -308,7 +307,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ehB-m9-AMg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GUx-Gd-dZP" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GUx-Gd-dZP" customClass="NavigationController" customModule="CodeAddictApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eHj-x6-Ebd">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -326,7 +325,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="image.png" width="730" height="730"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -6,8 +6,6 @@ target 'CodeAddictApp' do
   use_frameworks!
 
   # Pods for CodeAddictApp
-	pod 'RxSwift'
-	pod 'RxCocoa'
 	pod 'SwiftyJSON'
 
 end

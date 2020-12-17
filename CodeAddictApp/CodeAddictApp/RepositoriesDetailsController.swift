@@ -1,6 +1,5 @@
 import UIKit
-import RxSwift
-import RxCocoa
+import SwiftyJSON
 
 class CommitCell: UITableViewCell {
     @IBOutlet weak var commitNumber: UILabel!
@@ -17,7 +16,7 @@ class CommitCell: UITableViewCell {
     }
 }
 
-class RepositoriesDetailsController: UIViewController, UITableViewDelegate {
+class RepositoriesDetailsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var repoTitle: UILabel!
@@ -27,8 +26,7 @@ class RepositoriesDetailsController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var viewOnline: UIButton!
     @IBOutlet weak var shareRepo: UIButton!
     
-    private let githubRepository = GitHubRepository()
-    private let disposeBag = DisposeBag()
+    var jsonData: JSON = JSON()
     
     var passedRepoName: String = ""
     var passedRepoOwner: String = ""
@@ -55,14 +53,30 @@ class RepositoriesDetailsController: UIViewController, UITableViewDelegate {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 600
         tableView.delegate = self
+        tableView.dataSource = self
         
-        githubRepository.getCommits(owner: passedRepoOwner, repoName: passedRepoName).share()
-        .bind(to: tableView.rx.items(cellIdentifier: "commitCell", cellType: CommitCell.self)) { index, commit, cell in
-            cell.commitNumber.text = "\(index + 1)"
-            cell.commitAuthor.text = commit.commit.author.name
-            cell.commitMessage.text = commit.commit.message
-            cell.email.text = commit.commit.author.email
-        }.disposed(by: disposeBag)
+        getCommits(owner: passedRepoOwner, repoName: passedRepoName)
+    }
+    
+    func getCommits(owner: String, repoName: String) {
+        let task = URLSession.shared.dataTask(with: URL(string: "https://api.github.com/repos/\(owner)/\(repoName)/commits")!) { data, response, error in
+            guard let data=data else { return }
+            do {
+                self.jsonData = try JSON(data: data)
+                DispatchQueue.main.async {
+                    self.tableView.delegate = self
+                    self.tableView.dataSource = self
+                    self.tableView.reloadData()
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -75,6 +89,20 @@ class RepositoriesDetailsController: UIViewController, UITableViewDelegate {
         header.addSubview(label)
         return header
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "commitCell") as! CommitCell
+        cell.commitNumber.text = "\(indexPath.row + 1)"
+        cell.commitAuthor.text = jsonData[indexPath.row]["commit"]["author"]["name"].stringValue.uppercased()
+        cell.commitMessage.text = jsonData[indexPath.row]["commit"]["message"].stringValue
+        cell.email.text = jsonData[indexPath.row]["commit"]["author"]["email"].stringValue
+        return cell
+    }
+    
     
     @IBAction func viewOnline(_ sender: Any) {
         guard let url = URL(string: passedRepoUrl) else { return }
@@ -90,18 +118,4 @@ class RepositoriesDetailsController: UIViewController, UITableViewDelegate {
         activityViewController.isModalInPresentation = true
         self.present(activityViewController, animated: true, completion: nil)
     }
-}
-
-struct Commits: Decodable {
-    let commit: Commit
-}
-
-struct Commit: Decodable {
-    let message: String
-    let author: Author
-}
-
-struct Author: Decodable {
-    let name: String
-    let email: String
 }

@@ -13,10 +13,9 @@
 		D12D89CA258156E800636DEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89C9258156E800636DEC /* SceneDelegate.swift */; };
 		D12D89CC258156E800636DEC /* RepositoriesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D89CB258156E800636DEC /* RepositoriesListController.swift */; };
 		D12D89CF258156E800636DEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12D89CD258156E800636DEC /* Main.storyboard */; };
-		D12D89D1258156E900636DEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D12D89D0258156E900636DEC /* Assets.xcassets */; };
 		D12D89D4258156E900636DEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D12D89D2258156E900636DEC /* LaunchScreen.storyboard */; };
-		D1362D942584D6570035A354 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1362D932584D6570035A354 /* NetworkService.swift */; };
-		D1362D9B2585256F0035A354 /* GitHubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1362D9A2585256F0035A354 /* GitHubRepository.swift */; };
+		D1786396258B7E83007390D9 /* launchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D1786395258B7E83007390D9 /* launchscreen.png */; };
+		D178639B258B8041007390D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D178639A258B8041007390D9 /* Assets.xcassets */; };
 		D1EA168625822CAC003C7200 /* RepositoriesDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA168525822CAC003C7200 /* RepositoriesDetailsController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,11 +28,10 @@
 		D12D89C9258156E800636DEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D12D89CB258156E800636DEC /* RepositoriesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesListController.swift; sourceTree = "<group>"; };
 		D12D89CE258156E800636DEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D12D89D0258156E900636DEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D12D89D3258156E900636DEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D12D89D5258156E900636DEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D1362D932584D6570035A354 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		D1362D9A2585256F0035A354 /* GitHubRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepository.swift; sourceTree = "<group>"; };
+		D1786395258B7E83007390D9 /* launchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen.png; sourceTree = "<group>"; };
+		D178639A258B8041007390D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1EA168525822CAC003C7200 /* RepositoriesDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesDetailsController.swift; sourceTree = "<group>"; };
 		F433DCF79D7DCA584E10B807 /* Pods-CodeAddictApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CodeAddictApp.debug.xcconfig"; path = "Target Support Files/Pods-CodeAddictApp/Pods-CodeAddictApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,16 +86,15 @@
 		D12D89C6258156E800636DEC /* CodeAddictApp */ = {
 			isa = PBXGroup;
 			children = (
+				D178639A258B8041007390D9 /* Assets.xcassets */,
+				D1786395258B7E83007390D9 /* launchscreen.png */,
 				D12D89C7258156E800636DEC /* AppDelegate.swift */,
 				D12D89C9258156E800636DEC /* SceneDelegate.swift */,
 				D12D89CB258156E800636DEC /* RepositoriesListController.swift */,
 				D12D89CD258156E800636DEC /* Main.storyboard */,
-				D12D89D0258156E900636DEC /* Assets.xcassets */,
 				D12D89D2258156E900636DEC /* LaunchScreen.storyboard */,
 				D12D89D5258156E900636DEC /* Info.plist */,
 				D1EA168525822CAC003C7200 /* RepositoriesDetailsController.swift */,
-				D1362D932584D6570035A354 /* NetworkService.swift */,
-				D1362D9A2585256F0035A354 /* GitHubRepository.swift */,
 				D10C130D2587D3DC000941AD /* NavigationController.swift */,
 			);
 			path = CodeAddictApp;
@@ -163,7 +160,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D12D89D4258156E900636DEC /* LaunchScreen.storyboard in Resources */,
-				D12D89D1258156E900636DEC /* Assets.xcassets in Resources */,
+				D1786396258B7E83007390D9 /* launchscreen.png in Resources */,
+				D178639B258B8041007390D9 /* Assets.xcassets in Resources */,
 				D12D89CF258156E800636DEC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,8 +215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1362D9B2585256F0035A354 /* GitHubRepository.swift in Sources */,
-				D1362D942584D6570035A354 /* NetworkService.swift in Sources */,
 				D1EA168625822CAC003C7200 /* RepositoriesDetailsController.swift in Sources */,
 				D12D89CC258156E800636DEC /* RepositoriesListController.swift in Sources */,
 				D12D89C8258156E800636DEC /* AppDelegate.swift in Sources */,

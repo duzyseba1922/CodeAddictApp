@@ -20,6 +20,7 @@ class RepositoriesListController: UIViewController, UISearchBarDelegate, UITable
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     var jsonData: JSON = JSON()
     
@@ -48,7 +49,10 @@ class RepositoriesListController: UIViewController, UISearchBarDelegate, UITable
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        spinner.startAnimating()
+        
         let query = searchBar.text!.replacingOccurrences(of: " ", with: "_")
+        
         let task = URLSession.shared.dataTask(with: URL(string: "https://api.github.com/search/repositories?q=" + query)!) { data, response, error in
             guard let data=data else { return }
             do {
@@ -72,7 +76,12 @@ class RepositoriesListController: UIViewController, UISearchBarDelegate, UITable
         header.backgroundColor = .white
         let label = UILabel()
         label.frame = CGRect.init(x: 15, y: 20, width: header.frame.width, height: 30)
-        label.text = "Repositories"
+        if (jsonData["total_count"].intValue == 0) {
+            label.text = "There's no matching results"
+            spinner.stopAnimating()
+        } else {
+            label.text = "Repositories"
+        }
         label.font = .systemFont(ofSize: 25, weight: .bold)
         header.addSubview(label)
         return header
@@ -83,6 +92,9 @@ class RepositoriesListController: UIViewController, UISearchBarDelegate, UITable
         cell.repoName.text = jsonData["items"][indexPath.row]["name"].stringValue
         cell.repoStars.text = "☆ \(jsonData["items"][indexPath.row]["stargazers_count"].intValue)"
         cell.repoImage.load(url: URL(string: jsonData["items"][indexPath.row]["owner"]["avatar_url"].stringValue)!)
+        
+        spinner.stopAnimating()
+        
         return cell
     }
     
